@@ -9,24 +9,43 @@ public class ObjectRain : MonoBehaviour
 
     private float spawnRange = 25f;
     private float ySpawn = 20f;
+    private float yDestroyThreshold = -0.1f;
 
-    private float objectSpawnTime = 0.03f;
+    private float objectSpawnTime = 1f;
     private float startDelay = 1f;
+
+    private int selectedObjectIndex; // Index of the selected object from the objectToFall array
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObject", startDelay, objectSpawnTime);
+        StartCoroutine(SpawnObjects());
     }
 
-    void SpawnObject()
+    IEnumerator SpawnObjects()
     {
-        float xSpawnRange = Random.Range(-spawnRange, spawnRange);
-        float zSpawnRange = Random.Range(-spawnRange, spawnRange);
-        int randomIndex = Random.Range(0, objectToFall.Length);
+        yield return new WaitForSeconds(startDelay);
 
-        Vector3 spawnPos = new Vector3(xSpawnRange, ySpawn, zSpawnRange);
+        while (true)
+        {
+            GameObject objectToSpawn = objectToFall[selectedObjectIndex];
 
-        Instantiate(objectToFall[randomIndex], spawnPos, Quaternion.identity);
+            float xSpawnRange = Random.Range(-spawnRange, spawnRange);
+            float zSpawnRange = Random.Range(-spawnRange, spawnRange);
+            Vector3 spawnPos = new Vector3(xSpawnRange, ySpawn, zSpawnRange);
+
+            GameObject obj = Instantiate(objectToSpawn, spawnPos, Quaternion.identity);
+
+            // Set the object to be destroyed when it passes the yDestroyThreshold
+            Destroy(obj, Mathf.Abs(ySpawn - yDestroyThreshold) / Mathf.Abs(Physics.gravity.y));
+
+            yield return new WaitForSeconds(objectSpawnTime);
+        }
+    }
+
+    public void SetSelectedObjectIndex(int index)
+    {
+        // Set the selected object index
+        selectedObjectIndex = index;
     }
 }
