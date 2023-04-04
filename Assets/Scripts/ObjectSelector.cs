@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectSelector : MonoBehaviour
 {
-    public ObjectRain objectRain; // Reference to the ObjectRain script
-
-    public int objectIndex; // Index of the selected object from the objectToFall array
+    public UnityEvent ObjectSelectedEvent;
 
     private void OnMouseDown()
     {
-        // Set the selected object index in the ObjectRain script
-        objectRain.SetSelectedObjectIndex(objectIndex);
+        // Trigger the ObjectSelectedEvent event when the object is clicked
+        ObjectSelectedEvent.Invoke();
     }
 }

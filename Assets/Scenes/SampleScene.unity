@@ -233,8 +233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cd1c00714215c4eb8e40d9d53ae935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectRain: {fileID: 1763769783}
-  objectIndex: 0
+  ObjectSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,8 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cd1c00714215c4eb8e40d9d53ae935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectRain: {fileID: 1763769783}
-  objectIndex: 1
+  ObjectSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,8 +834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cd1c00714215c4eb8e40d9d53ae935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectRain: {fileID: 1763769783}
-  objectIndex: 2
+  ObjectSelectedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1763769782
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +870,10 @@ MonoBehaviour:
   - {fileID: 2007595429963606474, guid: b333452543a47c24a99b817d979ff421, type: 3}
   - {fileID: 5366662456126798485, guid: 13ac31ad4500d7c4a944e2d2c940fc34, type: 3}
   - {fileID: 2796111722476005803, guid: 55e8d8adb37668e4b9f07836b0c0babd, type: 3}
+  selectableObjects:
+  - {fileID: 73281483}
+  - {fileID: 745430810}
+  - {fileID: 1741006423}
 --- !u!4 &1763769784
 Transform:
   m_ObjectHideFlags: 0
